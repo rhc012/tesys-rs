@@ -21,9 +21,9 @@ pub struct ICRS {
 }
 
 impl SkyCoordinate<ICRS> {
-    pub fn new(_ra: f64, _dec: f64) -> SkyCoordinate<ICRS> {
-        let ra = Angle::new(_ra);
-        let dec = Angle::new(_dec);
+    pub fn new(_ra_deg: f64, _dec_deg: f64) -> SkyCoordinate<ICRS> {
+        let ra = Angle::new(_ra_deg);
+        let dec = Angle::new(_dec_deg);
         SkyCoordinate {
             coords: vec![ra, dec],
             _pm: ProperMotion::new(0., 0.),

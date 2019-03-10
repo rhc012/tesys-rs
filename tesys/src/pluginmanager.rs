@@ -6,6 +6,7 @@ use crate::PluginHost;
 use crate::net::Router;
 
 #[derive(Loggable)]
+#[derive(Debug)] // rhc 20190118
 pub struct PluginManager {
     hosts: Vec<PluginHost>,
 
@@ -29,15 +30,18 @@ impl PluginManager {
 
     pub fn load(&mut self, id: &'static str) -> Result<(), String> {
         match self.resolve_plugin_lib(id) {
-            Ok(path) => match PluginHost::load(path.to_string()) {
-                Ok(mut pgh) => {
-                    pgh.test();
-                    // More testing code.
-                    pgh.start();
-                    self.hosts.push(pgh);
-                    Ok(())
+            Ok(path) => { //     rhc 20190124
+                println!("rhc path.to_string(){}", path.to_string());
+                match PluginHost::load(path.to_string()) {
+                    Ok(mut pgh) => {
+                        pgh.test();
+                        // More testing code.
+                        pgh.start();
+                        self.hosts.push(pgh);
+                        Ok(())
+                    }
+                    Err(_e) => Err(format!("rhc Unable to load plugin '{}'", id).to_string()),
                 }
-                Err(_e) => Err(format!("Unable to load plugin '{}'", id).to_string()),
             },
             Err(_e) => Err(format!("Unable to resolve library for plugin '{}'", id).to_string()),
         }
@@ -49,6 +53,7 @@ impl PluginManager {
         let mut dir = String::new();
 
         for path in plugin_search_paths {
+            println!("rhc: path {}", path);
             if &lib[0..2] == "./" {
                 // This is a relative path, we should resolve it within the current plugin dir
                 let libtr = &lib[1..];

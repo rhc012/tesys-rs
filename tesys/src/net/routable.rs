@@ -1,5 +1,5 @@
 use crate::net::router::{Inlet, Outlet};
-use crate::net::Message;
+// rhc 20190118 .. unused use crate::net::Message;
 
 pub trait Routable {
     fn set_inlet(&mut self, inlet: Inlet);

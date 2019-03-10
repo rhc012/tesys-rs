@@ -106,3 +106,13 @@ macro_rules! tesys_err {
         loggable::err(&format!( $ ( $ arg ) * ));
     };
 }
+
+// rhc 20190218
+#[cfg(test)]
+mod tests {
+    use super::*;
+    #[test]
+    fn test_log() {
+        log("log works"); // doesn't actually produce any output, but the test passes
+    }
+}
