@@ -1,5 +1,5 @@
-use std::borrow::BorrowMut;
-use std::sync::mpsc::{Receiver, Sender};
+// rhc 20190118 .. unused use std::borrow::BorrowMut;
+// rhc 20190118 .. unused use std::sync::mpsc::{Receiver, Sender};
 use std::sync::{Arc, Mutex};
 use std::{thread, time};
 
@@ -14,6 +14,7 @@ use crate::Loggable;
 use crate::net::{CanHandleMessages, Message, Routable};
 use crate::Plugin;
 
+#[derive(Debug)] // rhc 20190118
 pub enum RunMode {
     Thread,
     Process,
@@ -21,6 +22,7 @@ pub enum RunMode {
 
 const DEFAULT_RUN_MODE: RunMode = RunMode::Thread;
 
+#[derive(Debug)] // rhc 20190118
 pub struct PluginHost {
     library: Option<Library>,
     inner: Arc<Mutex<PluginHostContext>>,
@@ -127,6 +129,7 @@ impl PluginHost {
 }
 
 #[derive(Loggable)]
+#[derive(Debug)] // rhc 20190118
 struct PluginHostContext {
     run_mode: RunMode,
     pub pg: Option<Box<Plugin>>,

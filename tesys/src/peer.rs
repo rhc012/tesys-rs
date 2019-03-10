@@ -1,11 +1,12 @@
-use std::{thread, time};
+// rhc 20190118 .. unused use std::{thread, time};
 
-use crate::loggable;
+// rhc 20190118 .. unused use crate::loggable;
 use crate::loggable::Loggable;
 use crate::timing::LoopTimer;
 use crate::PluginManager;
 
 #[derive(Loggable)]
+#[derive(Debug)] // rhc 20190118
 pub struct Peer {
     plugin_manager: PluginManager,
 
@@ -23,6 +24,7 @@ impl Peer {
     pub fn load_plugins(&mut self) {
         self.plugin_manager
             .add_plugin_search_directory("./target/debug/");
+        println!("A: {:?}", self);
         let pg_res = self.plugin_manager.load("tesys_example_plugin");
 
         match pg_res {

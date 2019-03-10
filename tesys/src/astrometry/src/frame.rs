@@ -20,6 +20,8 @@ pub trait CanTransformTo<T: Frame>: Clone {
         Self: Clone;
 }
 
-// Import the reference frame stbibructs from the submodule.
+/* rhc
+// Import the reference frame structs from the submodule.
 pub use crate::frames::fk5::FK5;
 pub use crate::frames::icrs::ICRS;
+*/

@@ -8,6 +8,7 @@ use crate::net::{Message, Routable};
 pub type Inlet = Receiver<Message>;
 pub type Outlet = Sender<Message>;
 
+#[derive(Debug)] // rhc 20190118
 pub struct Router {
     _receiver: Inlet,
     _sender: Outlet,

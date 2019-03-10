@@ -18,6 +18,15 @@ use crate::MAS_PER_DEG;
 use crate::MAS_PER_RAD;
 use crate::{DEFAULT_WRAP_MIN_ANGLE,DEFAULT_WRAP_MAX_ANGLE};
 
+/// A library for manipulating angles.
+/// Angles are stored in radians
+/// # Examples
+/// ```
+/// use crate Angle;
+/// use angle::Angle;
+/// let a: Angle = Angle::new(45.0);
+/// assert_eq!(45.0, a.deg());
+/// ```
 pub struct Angle {
     _angle: f64, // Measured in radians
 }
