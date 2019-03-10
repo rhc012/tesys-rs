@@ -106,13 +106,13 @@ impl Angle {
 
     pub fn wrap(&self) -> Angle {
         //! Wraps the angle contained within the struct to between the default wrap
-        //! angle specified within the crate. This should be between 0 and $2\pi$. 
+        //! angle specified within the crate. This should be between 0 and $2\pi$.
         self.wrap_with_bounds(DEFAULT_WRAP_MIN_ANGLE, DEFAULT_WRAP_MAX_ANGLE)
     }
 
     pub fn wrap_with_bounds(&self, lbound: f64, ubound: f64) -> Angle {
-        //! A more general case of the wrap angle function which will wrap to within arbitrary bounds, 
-        //! specified in radians. This is called by the more specific Angle::wrap() function. 
+        //! A more general case of the wrap angle function which will wrap to within arbitrary bounds,
+        //! specified in radians. This is called by the more specific Angle::wrap() function.
 
         if self._angle < lbound || self._angle > ubound {
             let mut rads = (self._angle - lbound) % (ubound - lbound);
